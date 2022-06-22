@@ -1,0 +1,2 @@
+1. Protected route on Diary does not work. (because users are required to loggin in backend)
+2. Delete functionality not working (delete yesterday record)
