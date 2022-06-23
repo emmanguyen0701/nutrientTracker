@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const dotenv = require('dotenv')
 
 const CURRENT_WORKING_DIR = process.cwd()
-const isDevelopment = process.env.NODE_ENV !== 'production'
 
 const env = dotenv.config().parsed
 
@@ -48,7 +47,6 @@ const config = {
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NoEmitOnErrorsPlugin(),
           new webpack.DefinePlugin(envKeys),
-          new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(isDevelopment ? 'development' : 'production')}),
           new webpack.ProvidePlugin({
             process: 'process/browser',
         })
