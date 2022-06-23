@@ -47,7 +47,9 @@ const config = {
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NoEmitOnErrorsPlugin(),
           new webpack.DefinePlugin(envKeys),
-          
+          new webpack.ProvidePlugin({
+            process: 'process/browser',
+          }),
     ],
     resolve: {
         alias: {
