@@ -44,15 +44,10 @@ const config = {
         ]
     },  
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin(envKeys),
-        new webpack.ProvidePlugin({
-        process: 'process/browser',
-    })
+        new webpack.EnvironmentPlugin(['NODE_ENV', 'REACT_APP_USDA_CLIENT_KEY', 'REACT_APP_GOOGLE_CLIENT_SECRET'])
     ],
     resolve: {
         alias: {
