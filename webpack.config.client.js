@@ -49,11 +49,12 @@ const config = {
           new webpack.DefinePlugin(envKeys),
           new webpack.ProvidePlugin({
             process: 'process/browser',
-          }),
+        })
     ],
     resolve: {
         alias: {
-          'react-dom': '@hot-loader/react-dom'
+          'react-dom': '@hot-loader/react-dom',
+            process: "process/browser"
         },
         modules: [
             'node_modules'
