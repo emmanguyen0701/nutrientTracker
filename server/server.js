@@ -3,8 +3,9 @@ import mongoose from 'mongoose'
 import config from '../config/config'
 import app from './express'
 
+
 const db = mongoose.connect(config.mongoUri)
-        .then(() => 'Database connected')
+        .then(() => {'Database connected'})
         .catch((err) => console.log(err))
 
 app.listen(config.port, (err) => {

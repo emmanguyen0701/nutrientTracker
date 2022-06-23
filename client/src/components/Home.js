@@ -132,6 +132,7 @@ const Home = () => {
 
     return (
     <Box sx={{ maxWidth: '370px', width: '540px', m: 'auto' }}>
+        <Typography>{process.env.NODE_ENV}</Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: '20px' }}>
             <Typography sx={{ mb: '18px' }}
             variant='h6'>Search Food For Nutrion</Typography>
