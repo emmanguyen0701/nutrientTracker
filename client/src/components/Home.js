@@ -11,6 +11,7 @@ import auth from '../auth/auth-helper'
 import SignInDialog from '../auth/SignInDialog'
 import getBadNutrients from '../utils/getBadNutrients'
 
+// const REACT_APP_USDA_CLIENT_KEY = ''
 
 const AddDiaryComplete = ({ open, onClose }) => {
     const navigate = useNavigate()
@@ -132,7 +133,6 @@ const Home = () => {
 
     return (
     <Box sx={{ maxWidth: '370px', width: '540px', m: 'auto' }}>
-        <Typography>{process.env.NODE_ENV}</Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: '20px' }}>
             <Typography sx={{ mb: '18px' }}
             variant='h6'>Search Food For Nutrion</Typography>
