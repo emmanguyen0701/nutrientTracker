@@ -7,6 +7,7 @@ import devBundle from './devBundle'
 import diaryRoutes from './routes/diary.routes'
 import authRoutes from './routes/auth.routes'
 import nutritionRoutes from './routes/nutrition.routes'
+import externalRoutes from './routes/external.routes'
 
 import template from '../template'
 
@@ -27,6 +28,7 @@ app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
 
+app.use('/api/externals', externalRoutes)
 app.use('/auth', authRoutes)
 app.use('/api/diary', diaryRoutes)
 app.use('/api/nutrient', nutritionRoutes)

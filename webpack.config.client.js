@@ -47,7 +47,6 @@ const config = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin(envKeys),
-        new webpack.EnvironmentPlugin(['NODE_ENV', 'REACT_APP_USDA_CLIENT_KEY', 'REACT_APP_GOOGLE_CLIENT_SECRET'])
     ],
     resolve: {
         alias: {

@@ -10,8 +10,8 @@ import { addFoodToDiary } from '../diary/api-diary'
 import auth from '../auth/auth-helper'
 import SignInDialog from '../auth/SignInDialog'
 import getBadNutrients from '../utils/getBadNutrients'
+import { getFoodBySearchQuery } from './external-apis'
 
-// const REACT_APP_USDA_CLIENT_KEY = ''
 
 const AddDiaryComplete = ({ open, onClose }) => {
     const navigate = useNavigate()
@@ -58,7 +58,7 @@ const Home = () => {
         description: '',
         nutrients: []
     })
-    const [url, setUrl] = useState('')
+    const [search, setSearch] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [values, setValues] = useState({
         error: '',
@@ -70,11 +70,10 @@ const Home = () => {
     useEffect(() => {
         // fetching data from USDA
         (async function() {
-            if (!!url) {
+            if (!!search) {
                 setIsLoading(true)
 
-                const res = await fetch(url)
-                const data = await res.json()
+                const data = await getFoodBySearchQuery({ food: query })
                 const nutrients = data.foods[0].foodNutrients
                 const filteredNutrients = getBadNutrients(nutrients)
                 setFood({ 
@@ -86,7 +85,7 @@ const Home = () => {
                 setIsLoading(false)
             }
         })()
-    }, [url])
+    }, [search])
 
     const handleSearchFoodChange = event => {
         setQuery(event.target.value)
@@ -103,8 +102,9 @@ const Home = () => {
             setValues({ ...values, error: 'Search field is required.' })
             return
         }
-        // set url with the search query
-        setUrl(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${process.env.REACT_APP_USDA_CLIENT_KEY}&query=${query}&pageSize=1&dataType=Foundation,Branded&sortBy=dataType.keyword&sortOrder=desc`)
+     
+        //  set search state to query
+        setSearch(query)
         setValues({ ...values, error: '' })
     }
 
@@ -152,7 +152,7 @@ const Home = () => {
                     {isLoading
                     ? <Typography variant='h6'>Loading...</Typography>
                     : 
-                    (url && // nutrient values will be presented in graphs
+                    (search && // nutrient values will be presented in graphs
                     <Box>
                         <Typography variant='h6'>Bad nutrients in {food?.name}</Typography>
                         <Typography>Saturated Fat: {food.nutrients[0]?.value + food?.nutrients[0]?.unitName.toLowerCase() || '0'}</Typography>
