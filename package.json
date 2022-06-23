@@ -67,5 +67,8 @@
     "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.13.0",
     "request": "^2.88.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
