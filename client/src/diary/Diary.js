@@ -84,6 +84,7 @@ const Diary = () => {
         const itemIndex = diaryToUpdate.food?.findIndex(f => f._id.toString() === item._id.toString())
         diaryToUpdate.food?.splice(itemIndex, 1)
         dispatch(['diaryFetched', diaryToUpdate])
+        console.log("From update Items", diaryToUpdate)
 
         getNutritionByCategory(
             { token: authObj.token }, 
