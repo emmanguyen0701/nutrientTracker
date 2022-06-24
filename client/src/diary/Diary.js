@@ -102,6 +102,7 @@ const Diary = () => {
     const handleDateChange = date => {
         const controller = new AbortController()
         const signal = controller.signal
+        console.log("From handleDate change", removeTime(date))
 
         getDiary(signal, 
             { userId: params.userId }, 
