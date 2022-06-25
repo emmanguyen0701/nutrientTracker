@@ -11,6 +11,7 @@ import auth from '../auth/auth-helper'
 import SignInDialog from '../auth/SignInDialog'
 import getBadNutrients from '../utils/getBadNutrients'
 import { getFoodBySearchQuery } from './external-apis'
+import useWindowDimension from '../hook/useWindowDimension'
 
 
 const AddDiaryComplete = ({ open, onClose }) => {
@@ -51,6 +52,7 @@ const AddDiaryComplete = ({ open, onClose }) => {
 
 const Home = () => {
     const authObj = auth.isAuthenticated()
+    const isMobile = useWindowDimension() <= 860
 
     const [query, setQuery] = useState('')
     const [food, setFood] = useState({
@@ -136,7 +138,7 @@ const Home = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: '20px' }}>
             <Typography sx={{ mb: '18px' }}
             variant='h6'>Search Food For Nutrion</Typography>
-            <Box sx={{ width: '76%' }}>
+            <Box sx={{ width: isMobile ? '85%' : '76%' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <TextField 
                     id='outlined-basic' label='Search food' variant='outlined' name='searchFood'
