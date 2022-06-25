@@ -20,7 +20,7 @@ const Menu = () => {
                         src={logo} />
                 </Link>
             </Box>
-            <Box sx={{  display: 'flex',fontWeight: '600', fontSize: '18px', justifyContent: 'space-between', width: isMobile ? '200px' :'280px' }}>
+            <Box sx={{  display: 'flex',fontWeight: '600', fontSize: '18px', justifyContent: 'space-between', width: isMobile ? '220px' :'280px' }}>
                 {!!authObj
                 ? (<Box sx={{  display: 'flex', fontWeight: '600', fontSize: '18px', justifyContent: 'space-between', width: '250px' }}>
                     <Link style={{ color: 'white' }} to={`/diary/${authObj.user._id}`}>Diary</Link>
