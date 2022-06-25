@@ -7,7 +7,7 @@ import app from './express'
 const db = mongoose.connect(config.mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    poolSize: 100,
+    // poolSize: 100,
     }).then(() => {'Database connected'})
     .catch((err) => console.log(err))
 

@@ -16,9 +16,9 @@ import FoodItem from '../food-item/FoodItem'
 import NutritionOverview from '../nutrition/NutritionOverview'
 import removeTime from '../utils/removeTime'
 
-const today = removeTime(new Date()) 
+let today = removeTime() 
 
-const initial_state = { added_on: today, }
+const initial_state = { added_on: today }
 
 const selectDateReducer = (state, [type, payload]) => {
     switch(type) {
@@ -84,7 +84,6 @@ const Diary = () => {
         const itemIndex = diaryToUpdate.food?.findIndex(f => f._id.toString() === item._id.toString())
         diaryToUpdate.food?.splice(itemIndex, 1)
         dispatch(['diaryFetched', diaryToUpdate])
-        console.log("From update Items", diaryToUpdate)
 
         getNutritionByCategory(
             { token: authObj.token }, 
