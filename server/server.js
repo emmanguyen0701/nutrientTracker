@@ -6,9 +6,10 @@ import app from './express'
 
 const db = mongoose.connect(config.mongoUri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true})
-        .then(() => {'Database connected'})
-        .catch((err) => console.log(err))
+    useUnifiedTopology: true,
+    poolSize: 100,
+    }).then(() => {'Database connected'})
+    .catch((err) => console.log(err))
 
 app.listen(config.port, (err) => {
     if (err) console.log(err)
