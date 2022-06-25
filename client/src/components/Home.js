@@ -138,7 +138,7 @@ const Home = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: '20px' }}>
             <Typography sx={{ mb: '18px' }}
             variant='h6'>Search Food For Nutrion</Typography>
-            <Box sx={{ width: isMobile ? '85%' : '76%' }}>
+            <Box sx={{ width: isMobile ? '80%' : '76%' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <TextField 
                     id='outlined-basic' label='Search food' variant='outlined' name='searchFood'
