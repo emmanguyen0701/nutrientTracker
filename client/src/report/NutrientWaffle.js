@@ -11,7 +11,7 @@ import { getNutritionByCategory } from '../nutrition/api-nutrition'
 import auth from '../auth/auth-helper'
 import removeTime from '../utils/removeTime'
 
-const today = removeTime(new Date())
+const today = removeTime()
 
 const NutrientWaffle = () => {
     const [error, setError] = useState('')

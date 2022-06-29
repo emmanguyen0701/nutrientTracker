@@ -70,7 +70,7 @@ describe('Nutrition', () => {
     })
 
     describe('/GET nutrient', () => {
-        it('Should fail to get nutrients as no date specified', async () => {
+        it('Should fail to get nutrients when no date specified', async () => {
             const token = await jwt.sign('123', config.jwtSecret)
             const res = await chai.request(server)
                             .get(`/api/nutrient/by/category?${undefined}`)
@@ -78,7 +78,7 @@ describe('Nutrition', () => {
                             .catch(err => console.log(err))
 
             assert.equal(res.status, 200)
-            assert.equal(res.body.error, 'No nutrient report found.')
+            assert.equal(res.body.error, 'No report found.')
         })
         it('Should get nutrients by category', async () => {
             const params = { dateSelected: removeTime(new Date()) }

@@ -115,7 +115,10 @@ const Home = () => {
             setOpenSignin(true)
             return
         } else {
-            if (food.name === '') setValues({ ...values, error: 'Food is required.' })
+            if (food.name === '') {
+                setValues({ ...values, error: 'Food is required.' })
+                return
+            }
             // calling addFood api from backend
             addFoodToDiary(food, { token: authObj.token }).then(res => {
                 if (res && res.error) {
