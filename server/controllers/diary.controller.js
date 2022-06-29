@@ -9,7 +9,7 @@ const getDiary = async (req, res) => {
         // get the date selected from the query
         const dateSelected = req.query.added_on
 
-        // find diary belongs to the user making request at chosen date
+        // find diary belonging to the user making request at chosen date
         const diary = await Diary.find({ $and: [
             { user: req.params.userId },
             { added_on: dateSelected }
