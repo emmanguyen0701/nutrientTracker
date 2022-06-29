@@ -2,5 +2,7 @@ export default function removeTime(date = new Date()) {
   const y = date.getFullYear()
   const m = date.getMonth()
   const d = date.getDate()
-  return new Date(y,m,d)
+  const myDate = new Date(y,m,d)
+  const dateModified = myDate.setUTCHours(12,0,0,0)
+  return dateModified
 }
