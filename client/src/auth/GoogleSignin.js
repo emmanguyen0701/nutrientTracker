@@ -7,6 +7,8 @@ import { Box, Typography,
 import { signIn } from './api-auth'
 import auth from './auth-helper'
 
+const GOOGLE_CLIENT_ID = '891523892023-uacgbpg0u1rhf99e8jilfvtk4onr42ic.apps.googleusercontent.com'
+
 class GoogleSignin extends React.Component {
     constructor(props) {
         super(props)
@@ -21,7 +23,7 @@ class GoogleSignin extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             google.accounts.id.initialize({
-                client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+                client_id: GOOGLE_CLIENT_ID,
                 callback: handleCredentialResponse,
             })
             google.accounts.id.renderButton(

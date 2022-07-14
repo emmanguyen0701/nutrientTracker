@@ -11,11 +11,12 @@ import { getNutritionByCategory } from '../nutrition/api-nutrition'
 import auth from '../auth/auth-helper'
 import removeTime from '../utils/removeTime'
 
-const today = removeTime(new Date())
+let today = removeTime()
 
 const NutrientWaffle = () => {
     const [error, setError] = useState('')
     const [dateSelected, setDateSelected] = useState(today)
+
     const [dataSodium, setDataSodium] = useState([
         { id: 'Salt', 
         label: 'Salt', 
@@ -42,7 +43,7 @@ const NutrientWaffle = () => {
 
         getNutritionByCategory(
             { token: authObj.token }, 
-            { dateSelected: dateSelected },
+            { dateSelected: dateSelected},
             signal)
         .then(res => {
             if (res && res.error) setError(res.error)
@@ -78,7 +79,7 @@ const NutrientWaffle = () => {
     }, [dateSelected])
 
     const handleDateChange = date => {
-        setDateSelected(date)
+        setDateSelected(removeTime(date))
         setError('')
     }
 

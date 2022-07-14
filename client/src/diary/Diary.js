@@ -16,9 +16,9 @@ import FoodItem from '../food-item/FoodItem'
 import NutritionOverview from '../nutrition/NutritionOverview'
 import removeTime from '../utils/removeTime'
 
-const today = removeTime(new Date()) 
+let today = removeTime() 
 
-const initial_state = { added_on: today, }
+const initial_state = { added_on: today }
 
 const selectDateReducer = (state, [type, payload]) => {
     switch(type) {
@@ -54,7 +54,7 @@ const Diary = () => {
         getDiary(signal, 
             { userId: params.userId }, 
             { token: authObj.token },
-            { added_on: today }
+            { added_on: initial_state.added_on }
             ).then(res => {
             if (res && res.error) setError(res.error)
             else {
@@ -64,7 +64,7 @@ const Diary = () => {
 
         getNutritionByCategory(
             { token: authObj.token }, 
-            { dateSelected: today },
+            { dateSelected: initial_state.added_on },
             signal)
         .then(res => {
             if (res && res.error) setError(res.error)
@@ -74,7 +74,7 @@ const Diary = () => {
         })
        
         return () => controller.abort()
-    }, [])
+    }, [initial_state])
 
     const updateItemsInDiary = (item) => {
         const controller = new AbortController()
@@ -101,6 +101,7 @@ const Diary = () => {
     const handleDateChange = date => {
         const controller = new AbortController()
         const signal = controller.signal
+
 
         getDiary(signal, 
             { userId: params.userId }, 
@@ -133,7 +134,7 @@ const Diary = () => {
             <Typography variant='h6'>Your Diary For </Typography>
             <Flatpickr style={{ marginLeft: '12px' }}
             options={{ maxDate: today }}
-            value={state.added_on}
+            value={initial_state.added_on}
             onChange={([date]) => handleDateChange(date)}
             />
         </Box>

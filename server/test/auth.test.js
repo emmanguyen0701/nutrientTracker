@@ -62,7 +62,7 @@ describe('User', () => {
     })
 
     describe('/GET signout user', () => {
-        it('Should clear the cookie', async () => {
+        it('Should clear the cookie and return corresponding message', async () => {
             const res = await chai.request(server)
                             .get('/auth/signout')
             
