@@ -15,9 +15,9 @@ const Menu = () => {
     return (
         <Box sx={{ bgcolor: 'primary.main', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem 5.5vw 0.8rem 3.5vw' }}>
             <Box>
-                <Link to='/'>
+                <Link to='/' aria-label='home'>
                         <img style={{ color: 'white', width: '70px', height: '70px' }} 
-                        src={logo} />
+                        src={logo} alt='logo' />
                 </Link>
             </Box>
             <Box sx={{  display: 'flex',fontWeight: '600', fontSize: '18px', justifyContent: 'space-between', width: isMobile ? '220px' :'280px' }}>
