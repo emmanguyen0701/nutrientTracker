@@ -5,13 +5,16 @@ import { TextField, Button,
     Box, Typography,
     DialogTitle, Dialog, 
 } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 
+import HealthyInfo from './HealthyInfo'
 import { addFoodToDiary } from '../diary/api-diary'
 import auth from '../auth/auth-helper'
 import SignInDialog from '../auth/SignInDialog'
 import getBadNutrients from '../utils/getBadNutrients'
 import { getFoodBySearchQuery } from './external-apis'
 import useWindowDimension from '../hook/useWindowDimension'
+import capitalizeFirstLetter from '../utils/capitalizeString'
 
 
 const AddDiaryComplete = ({ open, onClose }) => {
@@ -137,43 +140,68 @@ const Home = () => {
     const handleCloseSignin = () => setOpenSignin(false)
 
     return (
-    <Box sx={{ maxWidth: '370px', width: '540px', m: 'auto' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: '20px' }}>
-            <Typography sx={{ mb: '18px' }}
-            variant='h6'>Search Food For Nutrion</Typography>
-            <Box sx={{ width: isMobile ? '80%' : '76%' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <TextField 
-                    id='outlined-basic' label='Search food' variant='outlined' name='searchFood'
-                    onChange={handleSearchFoodChange}
-                    onKeyPress={handleKeyPress}
-                    value={query}
-                    />
-                    <Button sx={{ bgcolor: 'primary.main', color: 'primary.contrastText', '&:hover': { bgcolor: 'primary.hover' }}}
-                    onClick={handleSubmit}>Search</Button>
-                </Box>
-                { values.error && <Typography>{values.error}</Typography> }
-                <Box sx={{ mt: '20px' }}>
-                    {isLoading
-                    ? <Typography variant='h6'>Loading...</Typography>
-                    : 
-                    (search && // nutrient values will be presented in graphs
-                    <Box>
-                        <Typography variant='h6'>Bad nutrients in {food?.name}</Typography>
-                        <Typography>Saturated Fat: {food.nutrients[0]?.value + food?.nutrients[0]?.unitName.toLowerCase() || '0'}</Typography>
-                        <Typography>Sodium: {food.nutrients[1]?.value + food.nutrients[1]?.unitName.toLowerCase()  || '0'}</Typography>
-                        <Typography>Sugar: {food.nutrients[2]?.value + food.nutrients[2]?.unitName.toLowerCase()  || '0'}</Typography>
-                    </Box>)
-                    }
+        <Box>
+            <Box sx={{  minWidth: '370px', width: '600px', maxWidth: '100%', m: 'auto' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pt: '20px' }}>
+                    <Typography sx={{ mb: '18px' }}
+                    variant='h6'>Search Food For Nutrients</Typography>
+                    <Box sx={{ width: isMobile ? '90%' : '70%' }}>
+                        <Box sx={{ width: '100%', display: 'flex',
+                        '& .css-u3kf4b-MuiInputBase-root-MuiOutlinedInput-root': {
+                            borderRadius: '4px 0px 0px 4px'
+                        }}}>
+                            <TextField 
+                            id='outlined-basic' label='Search food' variant='outlined' name='searchFood'
+                            onChange={handleSearchFoodChange}
+                            onKeyPress={handleKeyPress}
+                            value={query}
+                            fullWidth/>
+                            <Button sx={{ 
+                                bgcolor: 'primary.main', 
+                                color: 'primary.contrastText', '&:hover': { bgcolor: 'primary.hover' },
+                                padding: '13.2px 8px',
+                                borderRadius: '0 4px 4px 0',
+                                borderLeft: '0px solid black'
+
+                            }}
+                            onClick={handleSubmit}>
+                                <SearchIcon sx={{ fontSize: '30px' }} />
+                            </Button>
+                        </Box>
+                        { values.error && <Typography>{values.error}</Typography> }
+                        <Box sx={{ mt: '20px' }}>
+                            {isLoading
+                            ? <Typography variant='h6'>Loading...</Typography>
+                            : 
+                            (search && // nutrient values presented in table
+                            <Box sx={{ textAlign: 'center' }}>
+                                <Typography variant='h6'>Bad Nutrients in {capitalizeFirstLetter(food?.name)}</Typography>
+                                <Box sx={{ marginTop: '16px', display: 'flex', width: '100%', minWidth: '340px', justifyContent: 'space-between' }}>
+                                    <div style={{ dislay: 'flex', flexDirection: 'column' }}>
+                                        <Typography sx={{ fontWeight: '600', fontSize: '26px' }}>{food.nutrients[0]?.value + food?.nutrients[0]?.unitName.toLowerCase() || '0'}</Typography>
+                                        <Typography sx={{ fontSize: '14px' }}>Saturated Fat</Typography>
+                                    </div>
+                                    <div style={{ dislay: 'flex', flexDirection: 'column' }}>
+                                        <Typography sx={{ fontWeight: '600', fontSize: '26px' }}>{food.nutrients[1]?.value + food.nutrients[1]?.unitName.toLowerCase()  || '0'}</Typography>
+                                        <Typography sx={{ fontSize: '14px' }}>Sodium</Typography>
+                                    </div>
+                                    <div style={{ dislay: 'flex', flexDirection: 'column' }}>
+                                        <Typography sx={{ fontWeight: '600', fontSize: '26px' }}>{food.nutrients[2]?.value + food.nutrients[2]?.unitName.toLowerCase()  || '0'}</Typography>
+                                        <Typography sx={{ fontSize: '14px' }}>Sugar</Typography>
+                                    </div>
+                                </Box>
+                            </Box>)}
+                        </Box>
+                    </Box>
+                    <Button onClick={handleAddFood}
+                    sx={{ bgcolor: 'secondary.main', color: 'secondary.contrastText', mt: '16px', '&:hover': { bgcolor: 'secondary.hover' } }}
+                    >Add Food To Diary</Button>
+                    <AddDiaryComplete open={open} onClose={handleClose} />
+                    <SignInDialog open={openSignin}  onClose={handleCloseSignin} />
                 </Box>
             </Box>
-            <Button onClick={handleAddFood}
-            sx={{ bgcolor: 'secondary.main', color: 'secondary.contrastText', mt: '30px', '&:hover': { bgcolor: 'secondary.hover' } }}
-            >Add Food To Diary</Button>
-            <AddDiaryComplete open={open} onClose={handleClose} />
-            <SignInDialog open={openSignin}  onClose={handleCloseSignin} />
+            <HealthyInfo />
         </Box>
-    </Box>
     )
 }
 

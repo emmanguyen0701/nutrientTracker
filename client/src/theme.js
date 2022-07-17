@@ -12,6 +12,11 @@ const theme = createTheme({
                 a: {
                     textDecoration: 'none'
                 },
+                textField: {
+                    [`& fieldset`]: {
+                      borderRadius: '5px 0px 0px 5px',
+                    },
+                }
             }
         }
     },
