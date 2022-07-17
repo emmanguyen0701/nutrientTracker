@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 
 import useWindowDimension from '../hook/useWindowDimension'
 import auth from '../auth/auth-helper'
-import logo from '../assets/images/imageedit_7_7726880872.png'
+import logo from '../../public/images/imageedit_7_7726880872.png'
 
 const Menu = () => {
     const navigate = useNavigate()
