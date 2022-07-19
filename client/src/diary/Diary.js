@@ -139,7 +139,7 @@ const Diary = () => {
             />
         </Box>
         {error
-        ?<Typography>{error}</Typography>
+        ?<Typography sx={{ ml: '15px' }}>{error}</Typography>
         : (<Box>
             <Grid container spacing={1}>
                 <Grid item xs={3}>

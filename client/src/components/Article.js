@@ -12,7 +12,7 @@ const Article = ({ subtitle, title, link, image }) => {
                 <div>
                     <img style={{ objectFit: 'contain', height: 'auto', maxWidth: '100%' }} src={imageSrc} />
                 </div>
-                <Box sx={{ bgcolor: 'white',}}>
+                <Box sx={{ bgcolor: 'white', paddingLeft: '10px', paddingBottom: '10px' }}>
                     <Box sx={{
                         paddingTop: '10px', 
                         width: '290px',

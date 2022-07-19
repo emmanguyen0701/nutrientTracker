@@ -7,10 +7,15 @@ import GoogleSignin from './auth/GoogleSignin'
 import Menu from './components/Menu'
 import ProtectedRoute from './auth/ProtectedRoute'
 import Reports from './report/Reports'
+import Footer from './components/footer/Footer'
+import MobileFooter from './components/footer/MobileFooter'
+import useWindowDimension from './hook/useWindowDimension'
 
 const MainRouter = () => {
+    const isMobile = useWindowDimension() <= 860
+
     return (
-        <div>
+        <div style={{ height: '100vh', margin: 0, display: 'flex', flexDirection: 'column' }}>
             <Menu />
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -29,6 +34,7 @@ const MainRouter = () => {
                     </ProtectedRoute>
                 } />
             </Routes>
+            { isMobile ? <MobileFooter /> : <Footer /> } 
         </div>
     )
 }
