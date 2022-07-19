@@ -16,7 +16,6 @@ import { getFoodBySearchQuery } from './external-apis'
 import useWindowDimension from '../hook/useWindowDimension'
 import capitalizeFirstLetter from '../utils/capitalizeString'
 
-
 const AddDiaryComplete = ({ open, onClose }) => {
     const navigate = useNavigate()
     const authObj = auth.isAuthenticated()
@@ -140,7 +139,7 @@ const Home = () => {
     const handleCloseSignin = () => setOpenSignin(false)
 
     return (
-        <Box>
+        <Box sx={{ paddingBottom: '40px' }}>
             <Box sx={{  minWidth: '370px', width: '600px', maxWidth: '100%', m: 'auto' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pt: '20px' }}>
                     <Typography sx={{ mb: '18px' }}
@@ -169,7 +168,7 @@ const Home = () => {
                             </Button>
                         </Box>
                         { values.error && <Typography>{values.error}</Typography> }
-                        <Box sx={{ mt: '20px' }}>
+                        <Box sx={{ mt: '22px' }}>
                             {isLoading
                             ? <Typography variant='h6'>Loading...</Typography>
                             : 
