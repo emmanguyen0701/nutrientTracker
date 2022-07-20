@@ -7,11 +7,11 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 
 import logo from '../../../public/images/imageedit_7_7726880872.png'
 
-
 const MobileFooter = () => (
   <Box sx={{
-    minHeight: '270px',
     marginTop: 'auto',
+    width: '100%',
+    minHeight: '280px',
     bgcolor: 'primary.main',
     color: 'white',
     pb: '10px',
@@ -20,7 +20,8 @@ const MobileFooter = () => (
     style={{display: 'flex',
     justifyContent: 'space-around',
     fontSize: '12px',
-    height: '50%'}}>
+    minHeight: '140px',
+    }}>
       <ul style={{
         paddingLeft: '0',
         listStyle: 'none',
