@@ -3,7 +3,6 @@ import React from 'react'
 import { Box, Typography,
 } from '@mui/material'
 
-
 const Article = ({ subtitle, title, link, image }) => {
     const imageSrc = require(`../../public/images/articles/${image}`).default
     return (

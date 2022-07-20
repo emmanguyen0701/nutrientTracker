@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
+
 import Home from './components/Home'
 import Diary from './diary/Diary'
 import GoogleSignin from './auth/GoogleSignin'
@@ -15,7 +16,7 @@ const MainRouter = () => {
     const isMobile = useWindowDimension() <= 860
 
     return (
-        <div style={{ height: '100vh', margin: 0, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ margin: 0, height: '100vh', display: 'flex', flexDirection: 'column' }}>
             <Menu />
             <Routes>
                 <Route path='/' element={<Home />} />

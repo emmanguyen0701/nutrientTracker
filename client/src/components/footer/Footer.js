@@ -9,11 +9,13 @@ import logo from '../../../public/images/imageedit_7_7726880872.png'
 
 const Footer = () => (
   <Box sx={{ 
-    minHeight: '220px',
-    padding: 0,
     marginTop: 'auto',
+    width: '100%',
+    height: '220px',
     bgcolor: 'primary.main',
-    color: 'white'}}>
+    color: 'white',
+    pb: '10px',
+    }}>
     <div style={{ 
         height: '130px',
         display: 'flex',
