@@ -20,7 +20,7 @@ const MobileFooter = () => (
     style={{display: 'flex',
     justifyContent: 'space-around',
     fontSize: '12px',
-    height: '50%',
+    minHeight: '140px',
     }}>
       <ul style={{
         paddingLeft: '0',
