@@ -1,6 +1,7 @@
 import fetch from "node-fetch"
 
 const handleUsdaApiCall = async (req, res) => {
+    // make call to USDA API and return response to users
     try {
         const query = req.query.food
         const resUsda = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${process.env.REACT_APP_USDA_CLIENT_KEY}&query=${query}&pageSize=1&dataType=Foundation,Branded&sortBy=dataType.keyword&sortOrder=desc`)

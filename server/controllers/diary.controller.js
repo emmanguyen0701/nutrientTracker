@@ -37,7 +37,7 @@ const getDiary = async (req, res) => {
 const addFoodToDiary = async (req, res) => {
     const { name, description, nutrients } = req.body
     // find food
-    // if not found create food and nutritionValue
+    // if food not found create food and nutrition values
     // else add food to diary
     try {
         let nF
@@ -46,7 +46,7 @@ const addFoodToDiary = async (req, res) => {
             food = new Food({ name, description })
             await food.save()
 
-            // reconstruct the data to allow manipulation at later stage
+            // reconstruct the data to allow data manipulation at later stage
             if (!!nutrients?.length) {
                 for (const nutrient of nutrients) {
                     if (nutrient) {

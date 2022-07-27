@@ -41,6 +41,7 @@ const NutrientWaffle = () => {
         const controller = new AbortController()
         const signal = controller.signal
 
+        // get total nutrition values in a selected date
         getNutritionByCategory(
             { token: authObj.token }, 
             { dateSelected: dateSelected},

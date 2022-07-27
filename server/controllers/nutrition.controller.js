@@ -7,8 +7,8 @@ const getNutritionByCategory = async (req, res) => {
     try {
     /*
     1. Find all food in diary
-    2. For each food, find the nutrient values
-    3. aggregate by nutrition values
+    2. For each food, find the nutrition values
+    3. Perform aggregation by nutrition values
     */
     const user = await User.findOne({ gid: req.auth }).exec()
     const diary = await Diary.find({ $and: [
@@ -35,7 +35,7 @@ const getNutritionByCategory = async (req, res) => {
         return acc
     }, Object.create(null))
 
-    return res.status(200).json(result) // result = { 'Salt': 1000, 'Sugars': 20, 'Saturated Fat': 10 } 
+    return res.status(200).json(result) // result = { 'Salt': 10, 'Sugars': 10, 'Saturated Fat': 10 } 
     } catch(err) {
         console.log(err)
     }

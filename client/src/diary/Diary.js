@@ -51,6 +51,7 @@ const Diary = () => {
         const controller = new AbortController()
         const signal = controller.signal
 
+        // get the diary information from the backend.
         getDiary(signal, 
             { userId: params.userId }, 
             { token: authObj.token },
@@ -62,6 +63,7 @@ const Diary = () => {
             }
         })
 
+        // get the sum of nutrition values based on date selected.
         getNutritionByCategory(
             { token: authObj.token }, 
             { dateSelected: initial_state.added_on },
@@ -76,6 +78,8 @@ const Diary = () => {
         return () => controller.abort()
     }, [initial_state])
 
+
+    // update diary when users delete food items
     const updateItemsInDiary = (item) => {
         const controller = new AbortController()
         const signal = controller.signal
@@ -98,10 +102,10 @@ const Diary = () => {
         }) 
     }
 
+    // get diary with selected date.
     const handleDateChange = date => {
         const controller = new AbortController()
         const signal = controller.signal
-
 
         getDiary(signal, 
             { userId: params.userId }, 
