@@ -13,6 +13,7 @@ const DeleteItem = ({ open, onClose, item, onDeleteItem }) => {
     const handleClose = () => onClose()
 
     const handleDeleteItem = () => {
+        // make call to backend to delete selected items
         deleteItemFromDiary({ userId: authObj.user._id }, 
             { itemId: item._id }, 
             { token: authObj.token })

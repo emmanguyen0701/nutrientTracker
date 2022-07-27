@@ -44,7 +44,7 @@ const signout = async (req, res) => {
 const isAuthenticated = expressJwt({
     secret: config.jwtSecret,
     algorithms: ['HS256'],
-    requestProperty: 'auth',  //decoded token saved in req.auth = '105064005930977338430'
+    requestProperty: 'auth',  //decoded token saved in req.auth
 })
 
 const hasAuthorization = (req, res, next) => {

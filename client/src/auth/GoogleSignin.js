@@ -21,6 +21,7 @@ class GoogleSignin extends React.Component {
     }
 
     componentDidMount() {
+        // render google sign in button to users
         setTimeout(() => {
             google.accounts.id.initialize({
                 client_id: GOOGLE_CLIENT_ID,

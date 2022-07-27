@@ -80,6 +80,7 @@ const Home = () => {
                 const data = await getFoodBySearchQuery({ food: query })
                 const nutrients = data.foods[0].foodNutrients
                 const filteredNutrients = getBadNutrients(nutrients)
+                // setting the food data to values received from backend
                 setFood({ 
                     name: query, 
                     description: data.foods[0].description,
@@ -107,7 +108,7 @@ const Home = () => {
             return
         }
      
-        //  set search state to query
+        //  set search state to the query user input
         setSearch(query)
         setValues({ ...values, error: '' })
     }
