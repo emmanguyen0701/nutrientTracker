@@ -1,6 +1,6 @@
 # Nutrition Tracker Application
 
-An online web application where users can search food for nutrition values, add food to their diaries and keep track of bad nutrition intake daily - developed using React, Node.js, Express.js and MongoDB.
+An online web application where users can search food for nutrition values, add food to their diaries and keep track of bad nutrition intake - developed using React, Node.js, Express.js and MongoDB.
 
 ![NutrientTracker](./client/public/images/nutrient-tracker.png)
 
