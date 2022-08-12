@@ -29,7 +29,7 @@ const theme = createTheme({
         secondary: {
             main: '#fa953c',
             contrastText: 'white',
-            hover: '#d67f31'
+            hover: '#eb8c38'
         },
         error: {
             main: '#c62828',

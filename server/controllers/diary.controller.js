@@ -41,7 +41,7 @@ const addFoodToDiary = async (req, res) => {
     // else add food to diary
     try {
         let nF
-        let food = await Food.findOne({ name: name }).exec()
+        let food = await Food.findOne({ description: description }).exec()
         if (!food) {
             food = new Food({ name, description })
             await food.save()
