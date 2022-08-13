@@ -2,7 +2,7 @@
 
 An online web application with user accounts, food search for nutritions, food diary and nutrition reports - developed using React, Node.js, Express.js and MongoDB.
 
-![NutrientTracker](./client/public/images/nutrient-tracker.png)
+![NutrientTracker](./client/public/images/nutrition-tracker.png)
 
 ### [Live Demo](https://nutrient--tracker.herokuapp.com/) 
 
