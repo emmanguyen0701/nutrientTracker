@@ -7,9 +7,9 @@ An online web application with user accounts, food search for nutritions, food d
 ### [Live Demo](https://nutrient--tracker.herokuapp.com/) 
 
 #### What you need to run this code
-1. Node (14.x)
-2. NPM (6.x)
-3. MongoDB (4.x)
+1. Node (14.x.x)
+2. NPM (6.x.x)
+3. MongoDB (4.x.x)
 
 ####  How to run this code
 1. Make sure MongoDB is running on your system.
